@@ -2,8 +2,9 @@
   "name": "fullstackopen_bloglist",
   "version": "0.0.1",
   "description": "repo for ex 11.20 - 11.21",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "build": "webpack --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/EGRrqq/fullStackOpen_bloglist/issues"
   },
-  "homepage": "https://github.com/EGRrqq/fullStackOpen_bloglist#readme"
+  "homepage": "https://github.com/EGRrqq/fullStackOpen_bloglist#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
 }
