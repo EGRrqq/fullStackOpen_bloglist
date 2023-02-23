@@ -1,33 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
+import { useState, useEffect } from 'react'
 
-const useNotes = (url) => {
-  const [notes, setNotes] = useState([])
-  useEffect(() => {
-    axios.get(url).then(response => {
-      setNotes(response.data)
-    })
-  }, [url])
-  return notes
-}
+import Blog from './components/Blog'
+import blogService from './services/blogs'
 
 const App = () => {
-  const [counter, setCounter] = useState(0)
-  const [values, setValues] = useState([])
-  const notes = useNotes(BACKEND_URL)
+    const [blogs, setBlogs] = useState([])
 
-  const handleClick = () => {
-    setCounter(counter + 1)
-    setValues(values.concat(counter))
-  }
+    useEffect(() => {
+        blogService.getAll().then(blogs =>
+            setBlogs( blogs )
+        )
+    }, [])
 
-  return (
-    <div className="container">
-      hello webpack {counter} clicks
-      <button onClick={handleClick}>press</button>
-      <div>{notes.length} notes on server {BACKEND_URL}</div>
-    </div>
-  )
+    return (
+        <div>
+            <h2>blogs</h2>
+            {blogs
+                .map(blog =>
+                    <Blog key={blog.id} blog={blog} />
+                )}
+        </div>
+    )
 }
 
 export default App
