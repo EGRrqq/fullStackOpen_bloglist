@@ -1,37 +1,37 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const path = require('path')
+const path = require('path');
+ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = () => {
-  return {
-    entry: './src/index.js',
-    output: {
-      path: path.resolve(__dirname, 'build'),
-      filename: 'bundle.js'
-    },
-    devServer: {
-        static: path.resolve(__dirname, 'build'),
-        compress: true,
-    },
-    devtool: 'source-map',
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: [/node_modules/],
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
-        },
-      ],
-    },
-    plugins: [
-      new HtmlWebPackPlugin({
+ module.exports = {
+  mode: 'development',
+   entry: {
+     index: './src/index.js',
+   },
+   devtool: 'inline-source-map',
+   devServer: {
+    static: './dist',
+  },
+   plugins: [
+     new HtmlWebpackPlugin({
         template: "./public/index.html",
         filename: "./index.html",
-      }),
+     }),
+   ],
+   module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+        },
+      },
     ],
-  }
-}
-
-module.exports = config
+  },
+   output: {
+     filename: 'bundle.js',
+     path: path.resolve(__dirname, 'dist'),
+     clean: true,
+     publicPath: '/',
+   },
+ };
