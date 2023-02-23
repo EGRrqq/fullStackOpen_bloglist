@@ -1,3 +1,4 @@
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require('path')
 
 const config = () => {
@@ -25,6 +26,12 @@ const config = () => {
         },
       ],
     },
+    plugins: [
+      new HtmlWebPackPlugin({
+        template: "./public/index.html",
+        filename: "./index.html",
+      }),
+    ],
   }
 }
 
