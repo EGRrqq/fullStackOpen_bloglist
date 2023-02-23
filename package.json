@@ -12,16 +12,6 @@
     "url": "https://github.com/EGRrqq/fullStackOpen_bloglist/issues"
   },
   "homepage": "https://github.com/EGRrqq/fullStackOpen_bloglist#readme",
-  "dependencies": {
-    "axios": "^0.27.2",
-    "core-js": "^3.28.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^4.0.3",
-    "regenerator-runtime": "^0.13.11",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
     "startqq": "react-scripts --openssl-legacy-provider start",
     "start": "webpack serve --mode=development",
@@ -38,19 +28,15 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "axios": "^0.27.2",
+    "core-js": "^3.28.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "regenerator-runtime": "^0.13.11",
+    "web-vitals": "^2.1.4"
   },
-  "proxy": "http://localhost:3003",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
