@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Blog from './Blog'
 
@@ -52,6 +52,7 @@ describe('<Blog />', () => {
     })
 
     test('if the like button is clicked twice, the event handler is called twice', async () => {
+        // eslint-disable-next-line no-unused-vars
         const { container } = render(
             <Blog
                 blog={blog}

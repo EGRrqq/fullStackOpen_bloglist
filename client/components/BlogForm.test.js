@@ -33,6 +33,6 @@ describe('<BlogForm />', () => {
         await user.click(submitButton)
 
         expect(mockHandler.mock.calls).toHaveLength(1)
-        expect(mockHandler.mock.calls[0][0]).toEqual( {"author": blog.author, "title": blog.title, "url": blog.url})
+        expect(mockHandler.mock.calls[0][0]).toEqual( { 'author': blog.author, 'title': blog.title, 'url': blog.url })
     })
 })

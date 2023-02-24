@@ -3,7 +3,7 @@ const middleware = require('../utils/middleware')
 const Blog = require('../models/blog')
 const Comment = require('../models/comment')
 
-blogsRouter.get('/', async (request, response, next) => {
+blogsRouter.get('/', async (request, response) => {
     const blogs = await Blog
         .find({})
         .populate('user', {
