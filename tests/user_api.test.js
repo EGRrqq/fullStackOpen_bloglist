@@ -11,6 +11,7 @@ const User = require('../models/user')
 
 describe('when there is initially one user in db', () => {
     beforeEach(async () => {
+        jest.setTimeout(10000)
         await User.deleteMany({})
 
         const passwordHash = await bcrypt.hash('sekret', 10)
