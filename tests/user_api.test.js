@@ -17,7 +17,7 @@ describe('when there is initially one user in db', () => {
         const user = new User({ username: 'root', passwordHash })
 
         await user.save()
-    }, 30000)
+    })
 
     test('creation succeeds with a fresh username', async () => {
         jest.setTimeout(30000)
@@ -39,7 +39,7 @@ describe('when there is initially one user in db', () => {
 
         const usernames = usersAtEnd.map(u => u.username)
         expect(usernames).toContain(newUser.username)
-    }, 30000)
+    })
 
     test('creation fails with proper statuscode and message if username already taken', async () => {
         jest.setTimeout(30000)
@@ -60,7 +60,7 @@ describe('when there is initially one user in db', () => {
 
         const usersAtEnd = await helper.usersInDb()
         expect(usersAtEnd).toEqual(usersAtStart)
-    }, 30000)
+    })
 
     test('creation fails if username is missing', async () => {
         jest.setTimeout(30000)
@@ -80,7 +80,7 @@ describe('when there is initially one user in db', () => {
 
         const usersAtEnd = await helper.usersInDb()
         expect(usersAtEnd).toEqual(usersAtStart)
-    }, 30000)
+    })
 
     test('creation fails if password is missing', async () => {
         jest.setTimeout(30000)
@@ -100,7 +100,7 @@ describe('when there is initially one user in db', () => {
 
         const usersAtEnd = await helper.usersInDb()
         expect(usersAtEnd).toEqual(usersAtStart)
-    }, 30000)
+    })
 
     test('creation fails if username is less than 3 characters', async () => {
         jest.setTimeout(30000)
@@ -121,7 +121,7 @@ describe('when there is initially one user in db', () => {
 
         const usersAtEnd = await helper.usersInDb()
         expect(usersAtEnd).toEqual(usersAtStart)
-    }, 30000)
+    })
 
     test('creation fails if password is less than 3 characters', async () => {
         jest.setTimeout(30000)
@@ -142,7 +142,7 @@ describe('when there is initially one user in db', () => {
 
         const usersAtEnd = await helper.usersInDb()
         expect(usersAtEnd).toEqual(usersAtStart)
-    }, 30000)
+    })
 
 })
 
