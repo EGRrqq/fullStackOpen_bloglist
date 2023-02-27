@@ -17,8 +17,8 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build": "webpack --mode=production",
     "eslint": "eslint \"./**/*.{js,jsx}\"",
-    "test": "cross-env NODE_ENV=test jest --verbose --runInBand --forceExit",
-    "test:frontend": "jest ./client/tests/**",
+    "test:backend": "cross-env NODE_ENV=test jest --verbose --runInBand --forceExit",
+    "test:frontend": "jest ./client/tests/",
     "start:test": "cross-env NODE_ENV=test node index.js",
     "cypress:open": "cypress open",
     "test:e2e": "cypress run"
