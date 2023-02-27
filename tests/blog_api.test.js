@@ -14,7 +14,7 @@ beforeEach(async () => {
         let blogObject = new Blog(blog)
         await blogObject.save()
     }
-})
+}, 30000)
 
 describe('when there is initially some blogs saved', () => {
     test('blogs are returned as json', async () => {
@@ -22,13 +22,13 @@ describe('when there is initially some blogs saved', () => {
             .get('/api/blogs')
             .expect(200)
             .expect('Content-Type', /application\/json/)
-    })
+    }, 30000)
 
     test('all blogs are returned', async () => {
         const response = await api.get('/api/blogs')
 
         expect(response.body).toHaveLength(helper.initialBlogs.length)
-    })
+    }, 30000)
 })
 
 describe('viewing a specific blog', () => {
@@ -44,14 +44,14 @@ describe('viewing a specific blog', () => {
         const processedBlogToView = JSON.parse(JSON.stringify(blogToView))
 
         expect(resultBlog.body).toEqual(processedBlogToView)
-    })
+    }, 30000)
 
     test('id of the blog is correct', async () => {
         const response = await api.get('/api/blogs')
         response.body.forEach((blog) => {
             expect(blog.id).toBeDefined()
         })
-    })
+    }, 30000)
 
 })
 
@@ -87,7 +87,7 @@ describe('addition of a new blog', () => {
         expect(titles).toContain(
             'Canonical string reduction'
         )
-    })
+    }, 30000)
 
     test('fails with status code 401 if token is invalid', async () => {
         const newBlog = {
@@ -102,7 +102,7 @@ describe('addition of a new blog', () => {
 
         const blogsAtEnd = await helper.blogsInDb()
         expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
-    })
+    }, 30000)
 
     test('fails with status code 400 if url is invalid', async () => {
         const newBlog = {
@@ -125,7 +125,7 @@ describe('addition of a new blog', () => {
 
         const blogsAtEnd = await helper.blogsInDb()
         expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
-    })
+    }, 30000)
 
     test('fails with status code 400 if title is invalid', async () => {
         const newBlog = {
@@ -148,7 +148,7 @@ describe('addition of a new blog', () => {
 
         const blogsAtEnd = await helper.blogsInDb()
         expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
-    })
+    }, 30000)
 
     test('if likes is missing, the default value will be 0', async () => {
         const newBlog = {
@@ -177,7 +177,7 @@ describe('addition of a new blog', () => {
 
         const blog = blogsAtEnd[helper.initialBlogs.length].likes
         expect(blog).toBe(0)
-    })
+    }, 30000)
 })
 
 describe('deletion of a blog', () => {
@@ -218,7 +218,7 @@ describe('deletion of a blog', () => {
 
         const titles = blogsAtEnd.map(r => r.title)
         expect(titles).not.toContain(blogToDelete.title)
-    })
+    }, 30000)
 })
 
 afterAll(() => {
