@@ -9,9 +9,9 @@ const api = supertest(app)
 
 const User = require('../models/user')
 
+jest.setTimeout(30000)
 describe('when there is initially one user in db', () => {
     beforeEach(async () => {
-        jest.setTimeout(30000)
         await User.deleteMany({})
 
         const passwordHash = await bcrypt.hash('sekret', 10)
@@ -21,7 +21,6 @@ describe('when there is initially one user in db', () => {
     })
 
     test('creation succeeds with a fresh username', async () => {
-        jest.setTimeout(30000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
@@ -43,7 +42,6 @@ describe('when there is initially one user in db', () => {
     })
 
     test('creation fails with proper statuscode and message if username already taken', async () => {
-        jest.setTimeout(30000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
@@ -64,7 +62,6 @@ describe('when there is initially one user in db', () => {
     })
 
     test('creation fails if username is missing', async () => {
-        jest.setTimeout(30000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
@@ -84,7 +81,6 @@ describe('when there is initially one user in db', () => {
     })
 
     test('creation fails if password is missing', async () => {
-        jest.setTimeout(30000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
@@ -104,7 +100,6 @@ describe('when there is initially one user in db', () => {
     })
 
     test('creation fails if username is less than 3 characters', async () => {
-        jest.setTimeout(30000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
@@ -125,7 +120,6 @@ describe('when there is initially one user in db', () => {
     })
 
     test('creation fails if password is less than 3 characters', async () => {
-        jest.setTimeout(30000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
