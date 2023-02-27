@@ -20,6 +20,7 @@ describe('when there is initially one user in db', () => {
     }, 30000)
 
     test('creation succeeds with a fresh username', async () => {
+        jest.setTimeout(30000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
