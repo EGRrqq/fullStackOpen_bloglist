@@ -11,7 +11,6 @@ const User = require('../models/user')
 
 describe('when there is initially one user in db', () => {
     beforeEach(async () => {
-        jest.setTimeout(10000)
         await User.deleteMany({})
 
         const passwordHash = await bcrypt.hash('sekret', 10)
@@ -21,6 +20,7 @@ describe('when there is initially one user in db', () => {
     })
 
     test('creation succeeds with a fresh username', async () => {
+        jest.setTimeout(10000)
         const usersAtStart = await helper.usersInDb()
 
         const newUser = {
@@ -59,7 +59,7 @@ describe('when there is initially one user in db', () => {
 
         const usersAtEnd = await helper.usersInDb()
         expect(usersAtEnd).toEqual(usersAtStart)
-    })
+    }, 10000)
 
     test('creation fails if username is missing', async () => {
         const usersAtStart = await helper.usersInDb()
