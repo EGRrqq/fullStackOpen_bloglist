@@ -4,11 +4,16 @@ on:
   push:
     branches:
       - main
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -22,3 +27,5 @@ jobs:
         run: npm run test:frontend
       - name: build
         run: npm run build
+      - name: Deploy to fly
+        run: flyctl deploy --remote-only
