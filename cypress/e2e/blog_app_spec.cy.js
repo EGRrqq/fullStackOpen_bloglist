@@ -1,6 +1,6 @@
 describe('Blog app', function() {
     beforeEach(function() {
-        cy.request('POST', 'http://localhost:3003/api/testing/reset')
+        cy.request('POST', 'http://localhost:8080/api/testing/reset')
 
         const user = {
             username: 'ilovejerseyclub',
@@ -14,9 +14,9 @@ describe('Blog app', function() {
             password: 'ilovejerseyclubtoo'
         }
 
-        cy.request('POST', 'http://localhost:3003/api/users/', user)
-        cy.request('POST', 'http://localhost:3003/api/users/', anotherUser)
-        cy.visit('http://localhost:3000')
+        cy.request('POST', 'http://localhost:8080/api/users/', user)
+        cy.request('POST', 'http://localhost:8080/api/users/', anotherUser)
+        cy.visit('http://localhost:8080')
     })
 
     it('login form is shown', function() {

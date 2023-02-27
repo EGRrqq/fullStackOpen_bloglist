@@ -7,7 +7,6 @@ const api = supertest(app)
 
 const Blog = require('../models/blog')
 
-jest.setTimeout(70000)
 beforeEach(async () => {
     await Blog.deleteMany({})
 
